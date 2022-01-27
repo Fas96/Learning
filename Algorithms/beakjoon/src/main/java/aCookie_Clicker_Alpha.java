@@ -1,10 +1,11 @@
 import java.util.Scanner;
+import java.util.function.Function;
 
 public class aCookie_Clicker_Alpha {
     public static void main(String[] args) {
         System.out.println("-------------------------");
 
-        solution("500.0 4.0 2000.0");
+        solution("30.0 25.0 100.0");
         System.out.println("-------------------------");
 
     }
@@ -17,19 +18,23 @@ public class aCookie_Clicker_Alpha {
         }
     }
 
+    private  static Function<String,Double> parseDb= (Double::parseDouble);
+
     private static Double solution(String lineInput) {
         String[] s = lineInput.split(" ");
-        Double C=Double.parseDouble(s[0]);
-        Double F=Double.parseDouble(s[1]);
-        Double X=Double.parseDouble(s[2]);
+        double C=parseDb.apply(s[0]);
+        double F=parseDb.apply(s[1]);
+        double X=parseDb.apply(s[2]);
+
         double CF=0.0;
         if (C<X){X-=C;System.out.println(C/2.0);F+=2;}
         while (true){
-            if (X-C<C) break;
-             CF = C / F;
-            System.out.println(CF);
+            CF = C / F;
+            System.out.println(F);
             X-=C;
-            F+=2;
+            F+=F-2;
+
+            if (X-C<C) break;
         }
 
 
