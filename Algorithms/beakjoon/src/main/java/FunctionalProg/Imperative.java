@@ -36,7 +36,7 @@ public class Imperative {
                     '}';
         }
     }
-    enum Gender{
+    public enum Gender{
         MALE,FEMALE,OTHER
     }
 }
