@@ -15,6 +15,8 @@ public class _Consumer {
     static Consumer<Customer> customerConsumerPrint=customer -> {
         System.out.println(customer.customerName+"||"+customer.customerphoneNum);
     };
+
+
     static class Customer{
         private final String customerName;
 
