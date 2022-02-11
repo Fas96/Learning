@@ -1,6 +1,8 @@
 class Solution:
-    def uniqueLetterString(self, s: str) -> int:
-        n = len(s)
+    @classmethod
+    def uniqueLetterString(cls, param):
+        n = len(param)
+
         a = defaultdict(list)
         for i in range(n):
             a[s[i]].append(i)
@@ -21,4 +23,5 @@ class Solution:
                     r = n - p[i]
                 ans += l*r
         return ans
-    main
+    if __name__ == '__main__':
+        Solution.uniqueLetterString("LEETCODE")
