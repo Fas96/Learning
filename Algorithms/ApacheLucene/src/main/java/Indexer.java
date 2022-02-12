@@ -1,11 +1,10 @@
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
-import org.apache.lucene.document.StringField;
+import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
-import org.apache.lucene.index.IndexWriterConfig;
-import org.apache.lucene.index.IndexableFieldType;
+import org.apache.lucene.index.IndexWriterConfig ;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
@@ -16,46 +15,46 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import static org.apache.lucene.util.Version.LATEST;
-import static org.apache.lucene.util.Version.LUCENE_8_10_1;
+public class Indexer
+{
+    private IndexWriter writer;
+    public Indexer(String indexDirectoryPath) throws IOException
+    {
+        //this directory will contain the indexes
+        Directory indexDirectory = FSDirectory.open(new File(indexDirectoryPath));
 
-public class Indexer {
-    private IndexWriter indexWriter;
-
-    public Indexer(String indexDirectoryPath) throws IOException {
-        Directory indexDirectory= FSDirectory.open(Path.of(indexDirectoryPath));
-
-        indexWriter=new IndexWriter(indexDirectory,new IndexWriterConfig());
-
+        //create the indexer
+        writer = new IndexWriter(indexDirectory,
+                new StandardAnalyzer(Version.LUCENE_36),true,
+                IndexWriter.MaxFieldLength.UNLIMITED);
     }
-
-    public void close() throws IOException {
-        indexWriter.close();
+    public void close() throws CorruptIndexException, IOException
+    {
+        writer.close();
     }
-
-
     private Document getDocument(File file) throws IOException
     {
         Document document = new Document();
         //index file contents
-        Field contentField = new CusField(LuceneConstants.CONTENTS, (IndexableFieldType) new FileReader(file));
+        Field contentField = new Field(LuceneConstants.CONTENTS, new FileReader(file));
         //index file name
-        Field fileNameField = new CusField(LuceneConstants.FILE_NAME,  (IndexableFieldType) new FileReader(file));
+        Field fileNameField = new Field(LuceneConstants.FILE_NAME,
+                file.getName(),
+                Field.Store.YES,Field.Index.NOT_ANALYZED);
         //index file path
-        Field filePathField = new CusField(LuceneConstants.FILE_NAME,  (IndexableFieldType) new FileReader(file));
+        Field filePathField = new Field(LuceneConstants.FILE_PATH,
+                file.getCanonicalPath(),
+                Field.Store.YES,Field.Index.NOT_ANALYZED);
         document.add(contentField);
         document.add(fileNameField);
         document.add(filePathField);
         return document;
     }
-
-
-
     private void indexFile(File file) throws IOException
     {
         System.out.println("Indexing "+file.getCanonicalPath());
         Document document = getDocument(file);
-        indexWriter.addDocument(document);
+        writer.addDocument(document);
     }
     public int createIndex(String dataDirPath, FileFilter filter) throws IOException
     {
@@ -68,6 +67,6 @@ public class Indexer {
                 indexFile(file);
             }
         }
-        return indexWriter.numRamDocs();
+        return writer.numDocs();
     }
 }

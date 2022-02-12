@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25b85562-02d4-4e6e-b73c-24bb3248d352" name="Changes" comment="" />
+    <list default="true" id="25b85562-02d4-4e6e-b73c-24bb3248d352" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../ApacheLucene/data/data/two-letter.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ApacheLucene/data/data/work-2022-1-04(각간).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ApacheLucene/data/data/work-2022-1-04(갈).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ApacheLucene/data/data/work-2022-1-04.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ApacheLucene/src/main/java/LuceneTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ApacheLucene/src/main/java/CusField.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ApacheLucene/src/main/java/CusField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ApacheLucene/src/main/java/Indexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ApacheLucene/src/main/java/Indexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ApacheLucene/src/main/java/Searcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ApacheLucene/src/main/java/Searcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,7 +35,11 @@
       </state>
     </system>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
   <component name="ProjectId" id="24BKDzbHHCJuPZVmhAsVIP2UBNM" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="abbreviatePackageNames" value="true" />
     <option name="autoscrollFromSource" value="true" />
@@ -56,6 +70,7 @@
       <updated>1643098423761</updated>
       <workItem from="1643098426538" duration="257000" />
       <workItem from="1643098712365" duration="116000" />
+      <workItem from="1644675142783" duration="507000" />
     </task>
     <servers />
   </component>
